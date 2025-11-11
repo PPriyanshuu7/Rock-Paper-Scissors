@@ -2,31 +2,35 @@
 
 A modern, minimal, and interactive **Rock–Paper–Scissors** game built using **HTML**, **CSS**, and **JavaScript**.
 
+🎮 **Play it live here:**  
+👉 [https://ppriyanshuu7.github.io/Rock-Paper-Scissors/](https://ppriyanshuu7.github.io/Rock-Paper-Scissors/)
+
 ---
 
 ## 🚀 Features
-- 🎮 Play against a computer opponent  
-- 🖱️ Smooth hover & click animations  
-- 💚 Selected option turns green on click  
-- 🌑 Clean dark grey theme  
-- 📱 Fully responsive and lightweight  
+- 💚 Clean dark-theme interface  
+- 🖱️ Smooth hover and click animations  
+- 🧠 Real-time results between player and computer  
+- ⚡ Lightweight and responsive design  
+- 🧩 Built from scratch with pure HTML, CSS, and JS  
 
 ---
 
-## 🧠 How It Works
-1. Click on ✊, 🖐️, or ✌️ to make your move.  
-2. The computer randomly selects its choice.  
-3. The result (Win/Lose/Tie) displays instantly on screen.
+## 🧠 How To Play
+1. Click on **✊**, **🖐️**, or **✌️** to make your move.  
+2. The computer randomly picks its choice.  
+3. Instantly see if you **Win**, **Lose**, or **Tie**.
 
 ---
 
-## 🧩 Technologies Used
-- **HTML5** – structure  
-- **CSS3** – styling and animations  
-- **JavaScript (ES6)** – game logic and interactivity  
+## 🛠️ Tech Stack
+- **HTML5** – for structure  
+- **CSS3** – for layout and animations  
+- **JavaScript (ES6)** – for logic and interactivity  
 
 ---
 
-## 💡 Preview
-You can play it live on **GitHub Pages** once you publish your repo!  
-Example:  
+## 🧩 Setup Locally
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/ppriyanshuu7/Rock-Paper-Scissors.git
