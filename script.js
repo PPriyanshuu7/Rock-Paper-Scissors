@@ -1,45 +1,68 @@
 const choices = ["rock", "paper", "scissors"];
+
+let playerScore = 0;
+let compScore = 0;
+
+const buttons = document.querySelectorAll(".choices button");
 const playerDisplay = document.getElementById("playerDisplay");
 const compDisplay = document.getElementById("compDisplay");
 const resultDisplay = document.getElementById("result");
-const buttons = document.querySelectorAll(".choices button");
-
-function playgame(playerChoice) {
-  const compChoice = choices[Math.floor(Math.random() * 3)];
-  let result = "";
-
-  if (playerChoice === compChoice) {
-    result = "It's a TIE!!!";
-  } else {
-    switch (playerChoice) {
-      case "rock":
-        result = compChoice === "scissors" ? "YOU WIN! 😁" : "YOU LOSE! 😭";
-        break;
-      case "paper":
-        result = compChoice === "rock" ? "YOU WIN! 😁" : "YOU LOSE! 😭";
-        break;
-      case "scissors":
-        result = compChoice === "paper" ? "YOU WIN! 😁" : "YOU LOSE! 😭";
-        break;
-    }
-  }
-
-  playerDisplay.textContent = `PLAYER: ${playerChoice}`;
-  compDisplay.textContent = `COMPUTER: ${compChoice}`;
-  resultDisplay.textContent = result;
-}
+const playerScoreDisplay = document.getElementById("playerScore");
+const compScoreDisplay = document.getElementById("compScore");
+const resetBtn = document.getElementById("resetBtn");
 
 buttons.forEach(button => {
-  button.addEventListener("mouseover", () => {
-    button.classList.add("hover");
-  });
-
-  button.addEventListener("mouseout", () => {
-    button.classList.remove("hover");
-  });
-
   button.addEventListener("click", () => {
-    buttons.forEach(btn => btn.classList.remove("hover"));
-    button.classList.add("hover");
+    playGame(button.dataset.choice);
   });
+});
+
+function playGame(playerChoice) {
+  const compChoice = choices[Math.floor(Math.random() * 3)];
+
+  playerDisplay.textContent = `You chose: ${playerChoice}`;
+  compDisplay.textContent = `AI chose: ${compChoice}`;
+
+  const result = getResult(playerChoice, compChoice);
+  resultDisplay.textContent = result;
+
+  resultDisplay.className = "";
+  resultDisplay.classList.add(
+    result.includes("Win") ? "win" :
+    result.includes("Lose") ? "lose" : "tie"
+  );
+
+  updateScore(result);
+}
+
+function getResult(player, comp) {
+  if (player === comp) return "It's a Tie 🤝";
+
+  if (
+    (player === "rock" && comp === "scissors") ||
+    (player === "paper" && comp === "rock") ||
+    (player === "scissors" && comp === "paper")
+  ) {
+    return "You Win 😎";
+  }
+
+  return "You Lose 😭";
+}
+
+function updateScore(result) {
+  if (result.includes("Win")) playerScore++;
+  else if (result.includes("Lose")) compScore++;
+
+  playerScoreDisplay.textContent = playerScore;
+  compScoreDisplay.textContent = compScore;
+}
+
+resetBtn.addEventListener("click", () => {
+  playerScore = 0;
+  compScore = 0;
+
+  playerScoreDisplay.textContent = 0;
+  compScoreDisplay.textContent = 0;
+
+  resultDisplay.textContent = "Game Reset 🔄";
 });
